@@ -1,0 +1,18 @@
+<!--views/frontend/random-book.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/random-book.css" />
+<script src="/scripts/randomItem.js"></script>
+
+<% if(data.randomBooks){ %>
+    <div class="title">Random Books</div>
+    <div class="random-book region">
+        <% for(let book of data.randomBooks){ %>
+        <a href="/book/<%= book.key %>">
+            <img src="<%= book.bookCover %>" />
+        </a>
+        <% } %>
+    </div>
+    <div class="random-button">
+        <img onclick="getRandomItems()" src="/images/random.png" />
+    </div>
+<% } %>

@@ -1,0 +1,29 @@
+<!--views/frontend/category.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/category.css" />
+<script src="/scripts/paginate_category.js"></script>
+
+<section class="Category">
+    <% if(data.items){ %>
+    <div class="inner region">
+            <% for(let item of data.items){ %>
+                <a href="/book/<%= item.key %>">
+                    <img class="bookCover" src="<%= item.bookCover %>" />
+                </a>
+            <% } %>
+    </div>
+    <div class="pagination">
+        <p>
+            <% if(data.count - data.page*data.categoryItemLimit === 1){ %>
+                1 more post
+            <% }else if(data.count - data.page*data.categoryItemLimit <= 0){ %>
+                no more post
+            <% }else{ %>
+                <%= data.count - data.page*data.categoryItemLimit %> more posts
+            <% } %>
+        </p>
+        <img class="load" onclick="paginate('<%= data.type %>')" 
+        src="/images/loadmore.png" />
+    </div>
+    <% } %>
+</section>

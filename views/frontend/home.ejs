@@ -1,0 +1,53 @@
+<!--views/frontend/home.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/home.css" />
+<script src="/scripts/navigate.js"></script>
+
+<div class="feature-post">
+    <% if(data.items){ %>
+        <%
+        if(data.items.length < 5){
+            var condition = data.items.length
+        }else{
+            var condition = 5
+        }
+        %>
+        <% for(let index=0; index<condition; index++){ %>
+            <a href="/book/<%= data.items[index].key %>">
+                <img src="<%= data.items[index].bookCover %>" />
+            </a>
+        <%  } %>
+    <% } %>
+</div>
+
+<div class="top-nav">
+    <img onclick="navigate.getItems(-1,'.top-nav')" src="/images/left.png" />
+        <img class="home" onclick="navigate.getItems(0,'.top-nav')" src="/images/home.png" />
+        <img onclick="navigate.getItems(1,'.top-nav')" src="/images/right.png" />
+</div>
+
+<div class="front-ad">
+    <img src="/images/donate-ad.jpg" />
+    <img src="/images/donate-ad.jpg" />
+</div>
+
+<% if(data.articles){ %>
+<div class="latest-article">Latest Articles</div>
+<div class="Article">
+    <% for(let article of data.articles){ %>
+        <a class="thumb" href="/book/<%= article.key %>">
+            <img src="<%= article.thumb %>" />
+            <% if(article.videos){ %>
+                <% if((article.videos !== "")&&(article.videos !== "[]")){ %>
+                <img class="play-icon" src="/images/play.png" />
+                <% } %>
+            <% } %>
+        </a>
+    <% } %>
+</div>
+<div class="nav-article">
+    <img onclick="navigate.getItems(-1,'.nav-article')" src="/images/left.png" />
+    <img class="home" onclick="navigate.getItems(0,'.nav-article')" src="/images/home.png" />
+    <img onclick="navigate.getItems(1,'.nav-article')" src="/images/right.png" />
+</div>
+<% } %>

@@ -1,0 +1,33 @@
+/* public/styles/frontend/category.css */
+
+.Category .inner{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 40px 20px; 
+    padding: 30px 0 50px;
+}
+
+.Category .inner img{
+    width: 100%;
+}
+
+.Category .pagination{
+    text-align: center;
+    font: 18px/1.5 StardosStencil, Limonf3;
+}
+
+.Category .pagination p{
+    padding-bottom: 10px;
+}
+
+.Category .pagination img:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+
+@media only screen and (max-width: 600px){
+    .Category .inner{
+        grid-template-columns: 100%;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,66 @@
+/* public/styles/index.css */
+
+.Index header{
+    background-color: var(--background);
+}
+
+.Index header .top-header .wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.Index header .inner{
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+    align-items: center;
+    text-align: center;
+    padding: 25px 0;
+}
+
+.Index header .inner .date{
+    text-align: left;
+    font: 18px/1.5 Oswald, Bayon;
+}
+
+.Index header .inner .title{
+    font: 50px/1.5 KumarOne, Koulen;
+}
+
+.Index header .inner .title .description{
+    font: italic 22px/1 Arial;
+}
+
+.Index header .inner form{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.Index header .inner form input{
+    font: var(--bordy-font);
+    padding: 1px 5px;
+}
+
+.Index footer{
+    text-align: center;
+    padding: 50px 0;
+}
+
+@media only screen and (max-width: 600px){
+    .Index header .top-header{
+        padding: 5px 10px;
+    }
+
+    .Index header .inner{
+        grid-template-columns: 100%;
+        padding: 10px;
+    }
+
+    .Index header .inner .date{
+        text-align: center;
+    }
+
+    .Index header .inner form{
+        padding-top: 10px;
+    }
+}
