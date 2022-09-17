@@ -13,13 +13,5 @@ router.post("/navigate/:element", async (req, res) => {
     home.navigate(req, res)
 })
 
-router.get("/random", async (req, res) => {
-    home.getRandomItems(req, res)
-})
-
-router.get("/book/:key", async (req, res) => {
-    home.getBook(req, res)
-})
-
 
 module.exports = router

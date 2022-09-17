@@ -2,7 +2,7 @@
 // npm install deta
 
 async function setup(){
-    const setting = await db.setting.get("61pett3k4zzf")
+    const setting = await db.setting.get("l83xjy3j")
     const settings = {
         siteTitle: setting.siteTitle,
         description: setting.description,

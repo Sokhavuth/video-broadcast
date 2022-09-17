@@ -1,21 +1,50 @@
 // controllers/frontend/home.js
 
-const bookdb = require("../../models/book")
+const postdb = require("../../models/post")
 
 
 class Home{
+    async shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    async generateVideos(posts){
+        const videos = []
+        for(let post of posts){
+            var playlist = post.videos
+            await videos.push((JSON.parse(playlist))[0].id)
+        }
+        return videos
+    }
+
     async getPage(req, res){
         const setup = await req.mysetup()
         setup.pageTitle = "Home"
         setup.route = "/"
 
-        const query = {"bookCover?ne": null, "bookCover?ne": ""}
-        let { books, length } = await bookdb.getBooks(req, 5, query)
-        setup.items = books
-        setup.count = length
-        const bookObj = await bookdb.getBooks(req, 13)
-        setup.articles = bookObj.books
-        setup.randomBooks = await bookdb.getRandomBooks(req, setup.fpostLimit, query)
+        const amount = 50
+
+        const query_news = { "categories?contains": "News" }
+        let newsObj = await postdb.getPosts(req, amount, query_news)
+        setup.newsThumb = newsObj.posts[0].thumb
+        const news_videos = await this.generateVideos(newsObj.posts)
+        setup.news = JSON.stringify(news_videos)
+
+        const query_movie = { "categories?contains": "Movie" }
+        let movieObj = await postdb.getPosts(req, amount, query_movie)
+        setup.movieThumb = movieObj.posts[0].thumb
+        const movie_videos = await this.generateVideos(movieObj.posts)
+        setup.movies = JSON.stringify(movie_videos)
+
+        let postObj = await postdb.getPosts(req, setup.fpostLimit)
+        setup.latestPost = postObj.posts
+        const post_videos = await this.generateVideos(postObj.posts)
+        setup.latestVideos = JSON.stringify(post_videos)
+
+        setup.count = amount
         setup.page = 1
 
         res.render("base", { data: setup })

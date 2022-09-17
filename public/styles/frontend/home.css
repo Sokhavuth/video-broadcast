@@ -1,16 +1,16 @@
 /* public/styles/frontend/home.css */
 
 .feature-post{
-    display: grid;
-    grid-template-columns: calc(20% - 8px) calc(20% - 8px) 
-    calc(20% - 8px) calc(20% - 8px) calc(20% - 8px);
-    grid-gap: 10px;
-    padding: 10px 0;
+    
 }
 
 .feature-post a img{
     width: 100%;
     float: left;
+}
+
+.feature-post .player{
+    grid-column: 2 / span 3;
 }
 
 .top-nav{

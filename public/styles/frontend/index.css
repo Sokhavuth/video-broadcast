@@ -1,44 +1,34 @@
 /* public/styles/index.css */
 
 .Index header{
-    background-color: var(--background);
-}
-
-.Index header .top-header .wrapper {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+    background-color: var(--background-dark);
 }
 
 .Index header .inner{
     display: grid;
-    grid-template-columns: 25% auto 25%;
+    grid-template-columns: 33% auto 25%;
     align-items: center;
-    text-align: center;
-    padding: 25px 0;
+    padding: 15px 0;
+    color: var(--link);
 }
 
-.Index header .inner .date{
+.Index header .inner .logo{
     text-align: left;
-    font: 18px/1.5 Oswald, Bayon;
-}
-
-.Index header .inner .title{
-    font: 50px/1.5 KumarOne, Koulen;
-}
-
-.Index header .inner .title .description{
-    font: italic 22px/1 Arial;
+    font: 35px/1.5 StardosStencil, Bayon;
 }
 
 .Index header .inner form{
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 80% 20%;
 }
 
 .Index header .inner form input{
     font: var(--bordy-font);
     padding: 1px 5px;
+}
+
+.Index header .inner .login{
+    text-align: right;
 }
 
 .Index footer{

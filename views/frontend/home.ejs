@@ -4,26 +4,11 @@
 <script src="/scripts/navigate.js"></script>
 
 <div class="feature-post">
-    <% if(data.items){ %>
-        <%
-        if(data.items.length < 5){
-            var condition = data.items.length
-        }else{
-            var condition = 5
-        }
-        %>
-        <% for(let index=0; index<condition; index++){ %>
-            <a href="/book/<%= data.items[index].key %>">
-                <img src="<%= data.items[index].bookCover %>" />
-            </a>
-        <%  } %>
-    <% } %>
+    <%- include("./random-video") %>
 </div>
 
 <div class="top-nav">
-    <img onclick="navigate.getItems(-1,'.top-nav')" src="/images/left.png" />
-        <img class="home" onclick="navigate.getItems(0,'.top-nav')" src="/images/home.png" />
-        <img onclick="navigate.getItems(1,'.top-nav')" src="/images/right.png" />
+    
 </div>
 
 <div class="front-ad">
@@ -31,7 +16,7 @@
     <img src="/images/donate-ad.jpg" />
 </div>
 
-<% if(data.articles){ %>
+<% if(data.videoss){ %>
 <div class="latest-article">Latest Articles</div>
 <div class="Article">
     <% for(let article of data.articles){ %>
