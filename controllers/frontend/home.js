@@ -44,6 +44,7 @@ class Home{
         let postObj = await postdb.getPosts(req, amount)
         setup.latestPost = postObj.posts
         const post_videos = await this.generateVideos(postObj.posts)
+        this.shuffleArray(post_videos)
         setup.latestVideos = JSON.stringify(post_videos)
         
         setup.count = amount

@@ -33,10 +33,6 @@
     const latestMovies = JSON.parse('<%- data.movies %>')
     const latestVideos = JSON.parse('<%- data.latestVideos %>')
 
-    shuffleArray(latestNews)
-    shuffleArray(latestMovies)
-    shuffleArray(latestVideos)
-    
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
