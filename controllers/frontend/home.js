@@ -26,24 +26,26 @@ class Home{
         setup.route = "/"
 
         const amount = 50
-
+        
         const query_news = { "categories?contains": "News" }
         let newsObj = await postdb.getPosts(req, amount, query_news)
+        this.shuffleArray(newsObj.posts)
         setup.newsThumb = newsObj.posts[0].thumb
         const news_videos = await this.generateVideos(newsObj.posts)
         setup.news = JSON.stringify(news_videos)
 
         const query_movie = { "categories?contains": "Movie" }
         let movieObj = await postdb.getPosts(req, amount, query_movie)
+        this.shuffleArray(movieObj.posts)
         setup.movieThumb = movieObj.posts[0].thumb
         const movie_videos = await this.generateVideos(movieObj.posts)
         setup.movies = JSON.stringify(movie_videos)
-
-        let postObj = await postdb.getPosts(req, setup.fpostLimit)
+        
+        let postObj = await postdb.getPosts(req, amount)
         setup.latestPost = postObj.posts
         const post_videos = await this.generateVideos(postObj.posts)
         setup.latestVideos = JSON.stringify(post_videos)
-
+        
         setup.count = amount
         setup.page = 1
 

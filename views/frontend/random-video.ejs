@@ -22,19 +22,20 @@
 </div>
 
 <script>
-    function shuffleArray(array1, array2) {
-        const array = array1.concat(array2)
+    function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
-
-        return array
     }
 
     const latestNews = JSON.parse('<%- data.news %>')
     const latestMovies = JSON.parse('<%- data.movies %>')
     const latestVideos = JSON.parse('<%- data.latestVideos %>')
+
+    shuffleArray(latestNews)
+    shuffleArray(latestMovies)
+    shuffleArray(latestVideos)
     
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -90,6 +91,7 @@
     }
     function changeCategory(playlist, label) {
         player.part = 0
+        shuffleArray(playlist)
         player.playlist = playlist
         player.loadVideoById(player.playlist[player.part])
         $('.latest-video').html(label)

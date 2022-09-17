@@ -22,17 +22,17 @@
         <link rel="stylesheet" href="/styles/frontend/menu.css" />
         <%
         let home = ''
-        let es6 = ''
-        let python = ''
+        let news = ''
+        let movie = ''
         let contact = ''
         let about = ''
 
         if(data.route === '/'){
             home = 'active'
-        }else if(data.type === "ES6"){
-            es6 = 'active'
-        }else if(data.type === "Python"){
-            python = "active"
+        }else if(data.type === "News"){
+            news = 'active'
+        }else if(data.type === "Movie"){
+            movie = "active"
         }else if(data.route === '/page/1oriwstnm41i'){
             contact = 'active'
         }else if(data.route === '/page/wrwkirgdwbbv'){
@@ -42,8 +42,8 @@
         <div class="wrapper region">
             <div class="topnav" id="myTopnav">
                 <a href="/" class="home <%= home %>">Home</a>
-                <a href="/category/ES6" class="es6 <%= es6 %>">ES6</a>
-                <a href="/category/Python" class="python <%= python %>">Python</a>
+                <a href="/category/News" class="news <%= news %>">News</a>
+                <a href="/category/Movie" class="movie <%= movie %>">Movie</a>
                 <a href="/page/1oriwstnm41i" class="contact <%= contact %>">Contact</a>
                 <a href="/page/wrwkirgdwbbv" class="about <%= about %>">About</a>
                 <a href="/admin">Login</a>

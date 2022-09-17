@@ -22,6 +22,10 @@
     padding-top: 53.4%;
 }
 
+.random-video a:hover{
+    cursor: pointer;
+}
+
 .random-video a img{
     position: absolute;
     top: 0;
