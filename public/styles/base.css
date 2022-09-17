@@ -5,9 +5,9 @@
     --background-dark: #38448d;
     --background: #5672b1;
     --background-light: #a5aab9;
-    --foreground: #dd9960;
-    --color: white;
-    --link: #e9ca7f;
+    --foreground: #f0a66a;
+    --color: black;
+    --link: #5672b1;
 }
 
 *{

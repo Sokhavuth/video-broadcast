@@ -24,6 +24,7 @@ class Home{
         const setup = await req.mysetup()
         setup.pageTitle = "Home"
         setup.route = "/"
+        setup.type = "post"
 
         const amount = 50
         
@@ -42,7 +43,7 @@ class Home{
         setup.movies = JSON.stringify(movie_videos)
         
         let postObj = await postdb.getPosts(req, amount)
-        setup.latestPost = postObj.posts
+        setup.latestPosts = postObj.posts.slice(0, 15)
         const post_videos = await this.generateVideos(postObj.posts)
         this.shuffleArray(post_videos)
         setup.latestVideos = JSON.stringify(post_videos)

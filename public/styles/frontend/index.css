@@ -9,7 +9,11 @@
     grid-template-columns: 33% auto 25%;
     align-items: center;
     padding: 15px 0;
-    color: var(--link);
+    color: var(--foreground);
+}
+
+.Index header .inner a{
+    color: var(--foreground);
 }
 
 .Index header .inner .logo{

@@ -67,24 +67,26 @@
     }
 
     var done = false;
-    function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.UNSTARTED) {
+    function onPlayerStateChange(event) {       
+        if(event.data == YT.PlayerState.ENDED){
             player.part += 1
             if(player.part === player.playlist.length){
                 player.part = 0
             }
-        }else if(event.data == YT.PlayerState.ENDED){
-            if(player.playlist[player.part]){
-                player.loadVideoById(player.playlist[player.part])
-            }
-        }
-    }
-    function onPlayerError(event){
-        player.part += 1
-        if(player.playlist[player.part]){
+            
             player.loadVideoById(player.playlist[player.part])
         }
     }
+
+    function onPlayerError(event){
+        player.part += 1
+        if(player.part === player.playlist.length){
+            player.part = 0
+        }
+        
+        player.loadVideoById(player.playlist[player.part])
+    }
+
     function changeCategory(playlist, label) {
         player.part = 0
         shuffleArray(playlist)

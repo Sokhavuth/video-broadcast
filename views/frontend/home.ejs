@@ -7,32 +7,38 @@
     <%- include("./random-video") %>
 </div>
 
-<div class="top-nav">
-    
-</div>
-
 <div class="front-ad">
     <img src="/images/donate-ad.jpg" />
     <img src="/images/donate-ad.jpg" />
 </div>
 
-<% if(data.videoss){ %>
-<div class="latest-article">Latest Articles</div>
-<div class="Article">
-    <% for(let article of data.articles){ %>
-        <a class="thumb" href="/book/<%= article.key %>">
-            <img src="<%= article.thumb %>" />
-            <% if(article.videos){ %>
-                <% if((article.videos !== "")&&(article.videos !== "[]")){ %>
-                <img class="play-icon" src="/images/play.png" />
+<% if(data.latestPosts){ %>
+<div class="Post">
+    <% for(let post of data.latestPosts){ %>
+        <div class="thumb">
+            <a class="wrapper" href="/post/<%= post.key %>">
+                <img src="<%= post.thumb %>" />
+                <% if(post.videos){ %>
+                    <% if((post.videos !== "")&&(post.videos !== "[]")){ %>
+                    <img class="play-icon" src="/images/play.png" />
+                    <% } %>
                 <% } %>
-            <% } %>
-        </a>
+            </a>
+            <p class="date"><%= (new Date(post.date)).toLocaleDateString("it-IT") %></p>
+            <p class="title"><a href="/post/<%= post.key %>"><%= post.title %></a></p>
+    </div>
     <% } %>
 </div>
-<div class="nav-article">
-    <img onclick="navigate.getItems(-1,'.nav-article')" src="/images/left.png" />
-    <img class="home" onclick="navigate.getItems(0,'.nav-article')" src="/images/home.png" />
-    <img onclick="navigate.getItems(1,'.nav-article')" src="/images/right.png" />
+<div class="pagination">
+    <p>
+        <% if(data.count - data.fpostLimit === 1){ %>
+            1 more post
+        <% }else if(data.count - data.fpostLimit <= 0){ %>
+            no more post
+        <% }else{ %>
+            <%= data.count - data.fpostLimit %> more posts
+        <% } %>
+    </p>
+    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
 </div>
 <% } %>
