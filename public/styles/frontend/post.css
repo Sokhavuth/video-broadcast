@@ -72,6 +72,16 @@
     opacity: .7;
 }
 
+.Post .main .content .category .fb-share-button,
+.Post .main .content .category .twitter-share-button{
+    float: right;
+}
+
+.Post .main .content .category .fb_iframe_widget span {
+    vertical-align: baseline !important;
+    margin-left: 5px;
+}
+
 @media screen and (max-width: 600px){
     .Post .main{
         grid-template-columns: 100%;
