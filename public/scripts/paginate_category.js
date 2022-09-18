@@ -15,10 +15,19 @@ function appendItem(items, data){
     let html = ''
     
     if(items){
-        for(const item of items){
-            html += `<a href="/book/${item.key}">`
-            html += `<img class="bookCover" src="${item.bookCover}" />`
+        for(const post of items){
+            html += `<div class="thumb">`
+            html += `<a class="wrapper" href="/post/${post.key}">`
+                html += `<img src="${post.thumb}" />`
+                    if(post.videos){
+                        if((post.videos !== "")&&(post.videos !== "[]")){
+                        html += `<img class="play-icon" src="/images/play.png" />`
+                    }
+                }
             html += `</a>`
+            html += `<p class="date">${(new Date(post.date)).toLocaleDateString("it-IT")}</p>`
+            html += `<p class="title"><a href="/post/${post.key}">${post.title}</a></p>`
+            html += `</div>`
         }
     }
     

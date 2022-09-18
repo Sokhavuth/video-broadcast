@@ -68,6 +68,14 @@
             <%- include("./home") %>
         <% }else if(data.route === "/post"){ %>
             <%- include("./post") %>
+        <%} else if(data.route.includes("/page")){ %>
+            <%- include("./page") %>
+        <% }else if(data.route === "/user"){ %>
+            <%- include("./user") %>
+        <% }else if(data.route === "/category"){ %>
+            <%- include("./category") -%>
+        <% }else if(data.route === "/search"){ %>
+            <%- include("./search") %>
         <% } %>
             
             

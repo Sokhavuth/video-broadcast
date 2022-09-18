@@ -7,7 +7,7 @@ const category = require("../../controllers/frontend/category")
 
 
 router.get("/:category", async (req, res) => {
-    category.getBooks(req, res)
+    category.getPosts(req, res)
 })
 
 router.post("/:category", async (req, res) => {

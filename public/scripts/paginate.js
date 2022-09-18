@@ -40,7 +40,7 @@ function appendItem(items, data){
         message = `${data.count - data.page*data.fpostLimit} more posts`
     }
 
-    $('.Post').append(html)
+    $(".Post").append(html)
     $('.pagination p').html(message)
     
     $('.pagination img').attr('src', '/images/loadmore.png')
