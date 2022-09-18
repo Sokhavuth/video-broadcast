@@ -1,7 +1,7 @@
 <!--views/frontend/home.ejs-->
 
 <link rel="stylesheet" href="/styles/frontend/home.css" />
-<script src="/scripts/navigate.js"></script>
+<script src="/scripts/paginate.js"></script>
 
 <div class="feature-post">
     <%- include("./random-video") %>
@@ -26,7 +26,7 @@
             </a>
             <p class="date"><%= (new Date(post.date)).toLocaleDateString("it-IT") %></p>
             <p class="title"><a href="/post/<%= post.key %>"><%= post.title %></a></p>
-    </div>
+        </div>
     <% } %>
 </div>
 <div class="pagination">

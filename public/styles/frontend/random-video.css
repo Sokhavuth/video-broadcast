@@ -52,6 +52,13 @@
     color: white;
 }
 
+.random-video .channel-logo img{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6%;
+}
+
 .random-video .play-all{
     position: relative;
     bottom: 10px;

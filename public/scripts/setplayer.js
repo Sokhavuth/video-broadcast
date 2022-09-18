@@ -27,10 +27,10 @@ function setScreen(video,id,click){
     }
 
     if(click){
-        $('.Book .video .playlist #part'+clicked)
-            .css({'background':'var(--background-dark)', 'color': 'black'})
+        $('.video .playlist #part'+clicked)
+            .css({'background':'rgb(208, 215, 233)', 'color': 'black'})
     }
-    $('.Book .video .playlist #part'+id)
+    $('.video .playlist #part'+id)
         .css({'background':'var(--link)', 'color': 'white'})
 
 

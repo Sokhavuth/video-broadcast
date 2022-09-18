@@ -43,15 +43,25 @@ class Home{
         setup.movies = JSON.stringify(movie_videos)
         
         let postObj = await postdb.getPosts(req, amount)
-        setup.latestPosts = postObj.posts.slice(0, 15)
+        setup.latestPosts = postObj.posts.slice(0, setup.fpostLimit)
         const post_videos = await this.generateVideos(postObj.posts)
         this.shuffleArray(post_videos)
         setup.latestVideos = JSON.stringify(post_videos)
         
-        setup.count = amount
+        setup.count = postObj.length
         setup.page = 1
 
         res.render("base", { data: setup })
+    }
+
+    async paginate(req, res){
+        const setup = await req.mysetup()
+        const { posts, length } = await postdb.paginate(req, setup.fpostLimit)
+        setup.count = length
+        setup.items = posts
+        setup.page = parseInt(req.body.page) + 1
+        
+        res.json(setup)
     }
 
     async navigate(req, res){
@@ -77,18 +87,6 @@ class Home{
         const query = {"bookCover?ne": null, "bookCover?ne": ""}
         setup.randomBooks = await bookdb.getRandomBooks(req, setup.fpostLimit, query)
         res.json(setup)
-    }
-
-    async getBook(req, res){
-        const setup = await req.mysetup()
-        setup.pageTitle = "Book page"
-        setup.route = "/book"
-
-        setup.item = await bookdb.getBook(req)
-        const query = {"bookTitle": setup.item.bookTitle}
-        setup.articles = await bookdb.getBooks(req, false, query)
-
-        res.render("base", { data: setup })
     }
 }
 
